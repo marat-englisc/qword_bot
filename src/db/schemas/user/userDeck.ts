@@ -1,5 +1,6 @@
 import { sql } from "drizzle-orm";
 import {
+  index,
   integer,
   sqliteTable,
   text,
@@ -33,5 +34,6 @@ export const userDeckTable = sqliteTable(
   },
   (table) => [
     uniqueIndex("user_decks_deck_unique").on(table.userId, table.deckId),
+    index("user_decks_deck_id_index").on(table.deckId),
   ],
 );
