@@ -1,38 +1,45 @@
 # qword_bot
-English word learning app
 
-Репозитории используют типы из Drizzle-схем. Поля `id`, `createdAt` и
-`updatedAt` заполняются автоматически и не входят в типы входных данных.
+Бот для изучения английских слов с FSRS и рекомендациями новых значений.
 
-| Сущность | Создание | Чтение | Обновление | Удаление |
-| --- | --- | --- | --- | --- |
-| Колоды | `createDeck` | `getAllDecks`, `getDeckById` | `updateDeckById` | `deleteDeckById` |
-| Карточки | `createCard` | `getAllCards`, `getCardById`, `getDeckCards` | `updateCardById` | `deleteCardById` |
-| Пользователи | `createUser` | `getAllUsers`, `getUserById`, `getUserByTelegramId` | `updateUserById` | `deleteUserById` |
+- [Алгоритм рекомендаций и модели](docs/new-word-recommendations.md).
+- [Ограничения, индексы и миграции](docs/model-integrity.md).
+- [API репозиториев и примеры](docs/repositories.md).
+- [Алгоритмы и сервисы обучения](docs/learning-services.md).
 
-Колоды и карточки находятся в `src/db/repositories/cardRepository.ts`,
-пользователи — в `src/db/repositories/userRepository.ts`.
-`changeDeck` сохранён как псевдоним `updateDeckById`.
+`src/db/repositories` содержит типизированный CRUD для всех 16 таблиц,
+очередь FSRS, историю для оценки профиля, выборку кандидатов и транзакции
+показа/принятия рекомендаций.
 
-Создание возвращает новую запись. Чтение одной записи, обновление и удаление
-возвращают запись или `undefined`, если она не найдена. Списки упорядочены по `id`.
-Обновления частичные: `undefined` пропускается, `null` очищает необязательное поле,
-пустой объект возвращает текущую запись без изменений.
-
-Удалить колоду с карточками нельзя: действует `onDelete: "restrict"`.
-Связанные данные удаляются согласно `onDelete: "cascade"` в моделях.
-Ошибки ограничений базы передаются вызывающему коду.
+`src/services` реализует оценку словарного профиля, тематические остатки
+памяти, ранжирование и исследование новых слов, персональные настройки
+FSRS 6 и выбор следующего шага обучения. Точка входа —
+`createLearningServices(db)`; обработчики Telegram подключаются к этим сервисам.
 
 ```ts
-import { createDeck, createCard, getDeckCards } from "./src/db/repositories/cardRepository";
-import { createUser } from "./src/db/repositories/userRepository";
+import { db } from "./src/config/connection";
+import { createRepositories } from "./src/db/repositories";
 
-const deck = await createDeck({ name: "Basics" });
-await createCard({ deckId: deck.id, title: "word", transcription: "wɜːd" });
-const cards = await getDeckCards(deck.id);
-const user = await createUser({ telegramId: 123456789, firstName: "Marat" });
+const repos = createRepositories(db);
+const user = await repos.users.users.create({ telegramId: 123456789 });
+await repos.users.ensureProfile(user.id);
+const candidates = await repos.recommendation.getCandidates(user.id, {
+  now: new Date(),
+  minDifficulty: -3,
+  maxDifficulty: -1,
+  limit: 100,
+});
 ```
 
-Проверки: `npm run typecheck` и `npm test`.
-Интеграционные тесты создают схему из моделей в SQLite в памяти; рабочая база
-не используется.
+```sh
+npm run typecheck
+npm test
+```
+
+Все тесты используют базы в памяти. Интеграционные тесты репозиториев применяют
+настоящие миграции через драйвер libSQL; рабочая база не используется.
+Для запуска бота нужны `DB_FILE_NAME` и `TELEGRAM_API` в окружении.
+
+Прежние функции пользователей сохранены в `userRepository.ts`.
+В `cardRepository.ts` оставлены совместимые псевдонимы CRUD слов.
+API удалённых колод и атрибутов больше нет.

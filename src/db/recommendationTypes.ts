@@ -1,0 +1,24 @@
+import type * as schema from "./schema";
+import type { CreateInput, UpdateInput } from "./repositories/core";
+
+export type Topic = typeof schema.topicTable.$inferSelect;
+export type CreateTopicInput = CreateInput<typeof schema.topicTable>;
+export type UpdateTopicInput = UpdateInput<typeof schema.topicTable, "id">;
+export type WordMeaningTopic = typeof schema.wordMeaningTopicTable.$inferSelect;
+export type CreateWordMeaningTopicInput = CreateInput<typeof schema.wordMeaningTopicTable>;
+export type UpdateWordMeaningTopicInput = UpdateInput<typeof schema.wordMeaningTopicTable, "wordMeaningId" | "topicId">;
+export type UserRecommendationProfile = typeof schema.userRecommendationProfileTable.$inferSelect;
+export type CreateUserRecommendationProfileInput = CreateInput<typeof schema.userRecommendationProfileTable>;
+export type UpdateUserRecommendationProfileInput = UpdateInput<typeof schema.userRecommendationProfileTable, "userId">;
+export type UserTopicProfile = typeof schema.userTopicProfileTable.$inferSelect;
+export type CreateUserTopicProfileInput = CreateInput<typeof schema.userTopicProfileTable>;
+export type UpdateUserTopicProfileInput = UpdateInput<typeof schema.userTopicProfileTable, "userId" | "topicId">;
+export type UserWordPreference = typeof schema.userWordPreferenceTable.$inferSelect;
+export type CreateUserWordPreferenceInput = CreateInput<typeof schema.userWordPreferenceTable>;
+export type UpdateUserWordPreferenceInput = UpdateInput<typeof schema.userWordPreferenceTable, "userId" | "wordMeaningId">;
+export type UserVocabularyAssessment = typeof schema.userVocabularyAssessmentTable.$inferSelect;
+export type CreateUserVocabularyAssessmentInput = CreateInput<typeof schema.userVocabularyAssessmentTable>;
+export type UpdateUserVocabularyAssessmentInput = UpdateInput<typeof schema.userVocabularyAssessmentTable, "userId" | "wordMeaningId">;
+export type WordRecommendation = typeof schema.wordRecommendationTable.$inferSelect;
+export type CreateWordRecommendationInput = CreateInput<typeof schema.wordRecommendationTable>;
+export type UpdateWordRecommendationInput = UpdateInput<typeof schema.wordRecommendationTable, "userId" | "id">;

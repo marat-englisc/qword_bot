@@ -1,7 +1,19 @@
 import type { Rating, State } from "ts-fsrs";
-import { index, integer, sqliteTable, real } from "drizzle-orm/sqlite-core";
+import { sql } from "drizzle-orm";
+import {
+  check,
+  index,
+  integer,
+  sqliteTable,
+  real,
+} from "drizzle-orm/sqlite-core";
 import { userTable } from "./user";
 import { wordMeaningTable } from "../card/wordMeaning";
+import {
+  finiteNumber,
+  nonNegativeInteger,
+  timestampMillis,
+} from "../../schemaChecks";
 
 export const userFsrsReviewTable = sqliteTable(
   "user_fsrs_review",
@@ -39,6 +51,10 @@ export const userFsrsReviewTable = sqliteTable(
     learningSteps: integer("learning_steps").notNull(),
 
     review: integer("review", { mode: "timestamp_ms" }).notNull(),
+
+    // Compute on the OLD Card at review time, before scheduler.next().
+    // NULL for first exposure, manual events, or unavailable historical data.
+    retrievabilityBefore: real("retrievability_before"),
   },
   (table) => [
     index("user_card_meaning_reviews_user_index").on(
@@ -49,6 +65,35 @@ export const userFsrsReviewTable = sqliteTable(
       table.userId,
       table.state,
       table.review,
+    ),
+    index("user_fsrs_review_user_meaning_review_index").on(
+      table.userId,
+      table.wordMeaningId,
+      table.review,
+    ),
+    index("user_fsrs_review_meaning_index").on(table.wordMeaningId),
+    // Manual=0 remains valid for imported/manual review events.
+    check(
+      "user_fsrs_review_rating_check",
+      sql`${table.rating} IN (0, 1, 2, 3, 4)`,
+    ),
+    check("user_fsrs_review_state_check", sql`${table.state} IN (0, 1, 2, 3)`),
+    // ReviewLog is the BEFORE snapshot: the first review still has S=D=0.
+    check(
+      "user_fsrs_review_memory_check",
+      sql`(${table.state} = 0 AND ${table.stability} = 0 AND ${table.difficulty} = 0) OR (${table.state} <> 0 AND ${table.stability} > 0 AND ${finiteNumber(table.stability)} AND ${table.difficulty} BETWEEN 1 AND 10)`,
+    ),
+    check(
+      "user_fsrs_review_intervals_check",
+      sql`${nonNegativeInteger(table.scheduledDays)} AND ${nonNegativeInteger(table.elapsedDays)} AND ${nonNegativeInteger(table.lastElapsedDays)} AND ${nonNegativeInteger(table.learningSteps)}`,
+    ),
+    check(
+      "user_fsrs_review_dates_check",
+      sql`${timestampMillis(table.due)} AND ${timestampMillis(table.review)}`,
+    ),
+    check(
+      "user_fsrs_review_retrievability_check",
+      sql`${table.retrievabilityBefore} IS NULL OR ${table.retrievabilityBefore} BETWEEN 0 AND 1`,
     ),
   ],
 );

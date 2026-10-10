@@ -14,8 +14,13 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
-    "test": "node --import tsx --test tests/repositories.test.cjs",
-    "typecheck": "tsc --noEmit"
+    "test": "node --import tsx --test tests/*.test.cjs",
+    "typecheck": "tsc --noEmit",
+    "test:recommendations": "node --import tsx --test tests/recommendation-schema.test.cjs",
+    "test:models": "node --import tsx --test tests/recommendation-schema.test.cjs tests/model-integrity.test.cjs",
+    "test:repositories": "node --import tsx --test tests/repositories.test.cjs tests/recommendation-repository.test.cjs",
+    "test:algorithms": "node --import tsx --test tests/learning-algorithms.test.cjs tests/learning-services.test.cjs",
+    "typecheck:recommendations": "tsc --project tsconfig.recommendations.json --noEmit"
   },
   "devDependencies": {
     "@types/node": "^26.6.5",

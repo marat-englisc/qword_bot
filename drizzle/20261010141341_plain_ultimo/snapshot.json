@@ -1,0 +1,2638 @@
+{
+  "version": "7",
+  "dialect": "sqlite",
+  "id": "19a2136e-50d0-4f28-a6d1-6c1bae94f33e",
+  "prevIds": [
+    "00000000-0000-0000-0000-000000000000"
+  ],
+  "ddl": [
+    {
+      "name": "cefr_level",
+      "entityType": "tables"
+    },
+    {
+      "name": "part_of_speech",
+      "entityType": "tables"
+    },
+    {
+      "name": "topic",
+      "entityType": "tables"
+    },
+    {
+      "name": "word",
+      "entityType": "tables"
+    },
+    {
+      "name": "word_meaning",
+      "entityType": "tables"
+    },
+    {
+      "name": "word_meaning_example",
+      "entityType": "tables"
+    },
+    {
+      "name": "word_meaning_topic",
+      "entityType": "tables"
+    },
+    {
+      "name": "user",
+      "entityType": "tables"
+    },
+    {
+      "name": "user_fsrs_data",
+      "entityType": "tables"
+    },
+    {
+      "name": "user_fsrs_review",
+      "entityType": "tables"
+    },
+    {
+      "name": "user_recommendation_profile",
+      "entityType": "tables"
+    },
+    {
+      "name": "user_settings",
+      "entityType": "tables"
+    },
+    {
+      "name": "user_topic_profile",
+      "entityType": "tables"
+    },
+    {
+      "name": "user_vocabulary_assessment",
+      "entityType": "tables"
+    },
+    {
+      "name": "user_word_preference",
+      "entityType": "tables"
+    },
+    {
+      "name": "word_recommendation",
+      "entityType": "tables"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "cefr_level"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "value",
+      "entityType": "columns",
+      "table": "cefr_level"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "part_of_speech"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "value",
+      "entityType": "columns",
+      "table": "part_of_speech"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "topic"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "slug",
+      "entityType": "columns",
+      "table": "topic"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "name",
+      "entityType": "columns",
+      "table": "topic"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "description",
+      "entityType": "columns",
+      "table": "topic"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "word"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "title",
+      "entityType": "columns",
+      "table": "word"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "transcription",
+      "entityType": "columns",
+      "table": "word"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "audio_url",
+      "entityType": "columns",
+      "table": "word"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "frequency_rank",
+      "entityType": "columns",
+      "table": "word"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "frequency_source",
+      "entityType": "columns",
+      "table": "word"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "(CURRENT_TIMESTAMP)",
+      "generated": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "table": "word"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "table": "word"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "word_id",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "part_of_speech_id",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "cefr_level_id",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "hint",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "meaning",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "meaning_translation",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "real",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "vocabulary_difficulty",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "true",
+      "generated": null,
+      "name": "is_recommendable",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "(CURRENT_TIMESTAMP)",
+      "generated": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "word_meaning_example"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "word_meaning_id",
+      "entityType": "columns",
+      "table": "word_meaning_example"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "example",
+      "entityType": "columns",
+      "table": "word_meaning_example"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "example_translation",
+      "entityType": "columns",
+      "table": "word_meaning_example"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "word_meaning_id",
+      "entityType": "columns",
+      "table": "word_meaning_topic"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "topic_id",
+      "entityType": "columns",
+      "table": "word_meaning_topic"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "1",
+      "generated": null,
+      "name": "relevance",
+      "entityType": "columns",
+      "table": "word_meaning_topic"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "user"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "telegram_id",
+      "entityType": "columns",
+      "table": "user"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "username",
+      "entityType": "columns",
+      "table": "user"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "first_name",
+      "entityType": "columns",
+      "table": "user"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "last_name",
+      "entityType": "columns",
+      "table": "user"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "false",
+      "generated": null,
+      "name": "is_admin",
+      "entityType": "columns",
+      "table": "user"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "(CURRENT_TIMESTAMP)",
+      "generated": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "table": "user"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "table": "user"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "word_meaning_id",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "due",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "stability",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "difficulty",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "elapsed_days",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "scheduled_days",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "learning_steps",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "reps",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "lapses",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "state",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "last_review",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "introduced_at",
+      "entityType": "columns",
+      "table": "user_fsrs_data"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "word_meaning_id",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "rating",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "state",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "due",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "stability",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "difficulty",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "scheduled_days",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "elapsed_days",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "last_elapsed_days",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "learning_steps",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "review",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "real",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "retrievability_before",
+      "entityType": "columns",
+      "table": "user_fsrs_review"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "self_reported_cefr_level_id",
+      "entityType": "columns",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "-2",
+      "generated": null,
+      "name": "vocabulary_ability",
+      "entityType": "columns",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0",
+      "generated": null,
+      "name": "assessment_weight",
+      "entityType": "columns",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "10",
+      "generated": null,
+      "name": "daily_new_meaning_limit",
+      "entityType": "columns",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'UTC'",
+      "generated": null,
+      "name": "timezone",
+      "entityType": "columns",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0.1",
+      "generated": null,
+      "name": "exploration_rate",
+      "entityType": "columns",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'content-v1'",
+      "generated": null,
+      "name": "algorithm_version",
+      "entityType": "columns",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "stats_updated_at",
+      "entityType": "columns",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "user_settings"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "table": "user_settings"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "key",
+      "entityType": "columns",
+      "table": "user_settings"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "value",
+      "entityType": "columns",
+      "table": "user_settings"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "table": "user_topic_profile"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "topic_id",
+      "entityType": "columns",
+      "table": "user_topic_profile"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0",
+      "generated": null,
+      "name": "interest_weight",
+      "entityType": "columns",
+      "table": "user_topic_profile"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "false",
+      "generated": null,
+      "name": "is_blocked",
+      "entityType": "columns",
+      "table": "user_topic_profile"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0",
+      "generated": null,
+      "name": "vocabulary_ability_offset",
+      "entityType": "columns",
+      "table": "user_topic_profile"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0",
+      "generated": null,
+      "name": "assessment_weight",
+      "entityType": "columns",
+      "table": "user_topic_profile"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0",
+      "generated": null,
+      "name": "recall_residual_sum",
+      "entityType": "columns",
+      "table": "user_topic_profile"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0",
+      "generated": null,
+      "name": "recall_weight",
+      "entityType": "columns",
+      "table": "user_topic_profile"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "0",
+      "generated": null,
+      "name": "distinct_reviewed_meanings",
+      "entityType": "columns",
+      "table": "user_topic_profile"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "stats_updated_at",
+      "entityType": "columns",
+      "table": "user_topic_profile"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "table": "user_topic_profile"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "word_meaning_id",
+      "entityType": "columns",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "knew_before",
+      "entityType": "columns",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "source",
+      "entityType": "columns",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "vocabulary_difficulty",
+      "entityType": "columns",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "'[]'",
+      "generated": null,
+      "name": "topic_weights",
+      "entityType": "columns",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "(unixepoch() * 1000)",
+      "generated": null,
+      "name": "assessed_at",
+      "entityType": "columns",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "table": "user_word_preference"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "word_meaning_id",
+      "entityType": "columns",
+      "table": "user_word_preference"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "status",
+      "entityType": "columns",
+      "table": "user_word_preference"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "snoozed_until",
+      "entityType": "columns",
+      "table": "user_word_preference"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "(unixepoch() * 1000)",
+      "generated": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "table": "user_word_preference"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "(unixepoch() * 1000)",
+      "generated": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "table": "user_word_preference"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "user_id",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "word_meaning_id",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "batch_id",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "position",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "algorithm_version",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "reason",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "predicted_known_probability",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "score",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "score_components",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "real",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "selection_probability",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "(unixepoch() * 1000)",
+      "generated": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "expires_at",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "shown_at",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "feedback",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "feedback_at",
+      "entityType": "columns",
+      "table": "word_recommendation"
+    },
+    {
+      "columns": [
+        "word_id"
+      ],
+      "tableTo": "word",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_word_meaning_word_id_word_id_fk",
+      "entityType": "fks",
+      "table": "word_meaning"
+    },
+    {
+      "columns": [
+        "part_of_speech_id"
+      ],
+      "tableTo": "part_of_speech",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_word_meaning_part_of_speech_id_part_of_speech_id_fk",
+      "entityType": "fks",
+      "table": "word_meaning"
+    },
+    {
+      "columns": [
+        "cefr_level_id"
+      ],
+      "tableTo": "cefr_level",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "RESTRICT",
+      "nameExplicit": false,
+      "name": "fk_word_meaning_cefr_level_id_cefr_level_id_fk",
+      "entityType": "fks",
+      "table": "word_meaning"
+    },
+    {
+      "columns": [
+        "word_meaning_id"
+      ],
+      "tableTo": "word_meaning",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_word_meaning_example_word_meaning_id_word_meaning_id_fk",
+      "entityType": "fks",
+      "table": "word_meaning_example"
+    },
+    {
+      "columns": [
+        "word_meaning_id"
+      ],
+      "tableTo": "word_meaning",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_word_meaning_topic_word_meaning_id_word_meaning_id_fk",
+      "entityType": "fks",
+      "table": "word_meaning_topic"
+    },
+    {
+      "columns": [
+        "topic_id"
+      ],
+      "tableTo": "topic",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_word_meaning_topic_topic_id_topic_id_fk",
+      "entityType": "fks",
+      "table": "word_meaning_topic"
+    },
+    {
+      "columns": [
+        "user_id"
+      ],
+      "tableTo": "user",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_user_fsrs_data_user_id_user_id_fk",
+      "entityType": "fks",
+      "table": "user_fsrs_data"
+    },
+    {
+      "columns": [
+        "word_meaning_id"
+      ],
+      "tableTo": "word_meaning",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_user_fsrs_data_word_meaning_id_word_meaning_id_fk",
+      "entityType": "fks",
+      "table": "user_fsrs_data"
+    },
+    {
+      "columns": [
+        "user_id"
+      ],
+      "tableTo": "user",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_user_fsrs_review_user_id_user_id_fk",
+      "entityType": "fks",
+      "table": "user_fsrs_review"
+    },
+    {
+      "columns": [
+        "word_meaning_id"
+      ],
+      "tableTo": "word_meaning",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_user_fsrs_review_word_meaning_id_word_meaning_id_fk",
+      "entityType": "fks",
+      "table": "user_fsrs_review"
+    },
+    {
+      "columns": [
+        "user_id"
+      ],
+      "tableTo": "user",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_user_recommendation_profile_user_id_user_id_fk",
+      "entityType": "fks",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "columns": [
+        "self_reported_cefr_level_id"
+      ],
+      "tableTo": "cefr_level",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "SET NULL",
+      "nameExplicit": false,
+      "name": "fk_user_recommendation_profile_self_reported_cefr_level_id_cefr_level_id_fk",
+      "entityType": "fks",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "columns": [
+        "user_id"
+      ],
+      "tableTo": "user",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_user_settings_user_id_user_id_fk",
+      "entityType": "fks",
+      "table": "user_settings"
+    },
+    {
+      "columns": [
+        "user_id"
+      ],
+      "tableTo": "user",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_user_topic_profile_user_id_user_id_fk",
+      "entityType": "fks",
+      "table": "user_topic_profile"
+    },
+    {
+      "columns": [
+        "topic_id"
+      ],
+      "tableTo": "topic",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_user_topic_profile_topic_id_topic_id_fk",
+      "entityType": "fks",
+      "table": "user_topic_profile"
+    },
+    {
+      "columns": [
+        "user_id"
+      ],
+      "tableTo": "user",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_user_vocabulary_assessment_user_id_user_id_fk",
+      "entityType": "fks",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "columns": [
+        "word_meaning_id"
+      ],
+      "tableTo": "word_meaning",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_user_vocabulary_assessment_word_meaning_id_word_meaning_id_fk",
+      "entityType": "fks",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "columns": [
+        "user_id"
+      ],
+      "tableTo": "user",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_user_word_preference_user_id_user_id_fk",
+      "entityType": "fks",
+      "table": "user_word_preference"
+    },
+    {
+      "columns": [
+        "word_meaning_id"
+      ],
+      "tableTo": "word_meaning",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_user_word_preference_word_meaning_id_word_meaning_id_fk",
+      "entityType": "fks",
+      "table": "user_word_preference"
+    },
+    {
+      "columns": [
+        "user_id"
+      ],
+      "tableTo": "user",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_word_recommendation_user_id_user_id_fk",
+      "entityType": "fks",
+      "table": "word_recommendation"
+    },
+    {
+      "columns": [
+        "word_meaning_id"
+      ],
+      "tableTo": "word_meaning",
+      "columnsTo": [
+        "id"
+      ],
+      "onUpdate": "NO ACTION",
+      "onDelete": "CASCADE",
+      "nameExplicit": false,
+      "name": "fk_word_recommendation_word_meaning_id_word_meaning_id_fk",
+      "entityType": "fks",
+      "table": "word_recommendation"
+    },
+    {
+      "columns": [
+        "word_meaning_id",
+        "topic_id"
+      ],
+      "nameExplicit": false,
+      "name": "word_meaning_topic_pk",
+      "entityType": "pks",
+      "table": "word_meaning_topic"
+    },
+    {
+      "columns": [
+        "user_id",
+        "topic_id"
+      ],
+      "nameExplicit": false,
+      "name": "user_topic_profile_pk",
+      "entityType": "pks",
+      "table": "user_topic_profile"
+    },
+    {
+      "columns": [
+        "user_id",
+        "word_meaning_id"
+      ],
+      "nameExplicit": false,
+      "name": "user_word_preference_pk",
+      "entityType": "pks",
+      "table": "user_word_preference"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "cefr_level_pk",
+      "table": "cefr_level",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "part_of_speech_pk",
+      "table": "part_of_speech",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "topic_pk",
+      "table": "topic",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "word_pk",
+      "table": "word",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "word_meaning_pk",
+      "table": "word_meaning",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "word_meaning_example_pk",
+      "table": "word_meaning_example",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "user_pk",
+      "table": "user",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "user_fsrs_data_pk",
+      "table": "user_fsrs_data",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "user_fsrs_review_pk",
+      "table": "user_fsrs_review",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "user_id"
+      ],
+      "nameExplicit": false,
+      "name": "user_recommendation_profile_pk",
+      "table": "user_recommendation_profile",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "user_settings_pk",
+      "table": "user_settings",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "user_vocabulary_assessment_pk",
+      "table": "user_vocabulary_assessment",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        "id"
+      ],
+      "nameExplicit": false,
+      "name": "word_recommendation_pk",
+      "table": "word_recommendation",
+      "entityType": "pks"
+    },
+    {
+      "columns": [
+        {
+          "value": "lower(trim(\"value\"))",
+          "isExpression": true
+        }
+      ],
+      "isUnique": true,
+      "where": null,
+      "origin": "manual",
+      "name": "part_of_speech_value_unique",
+      "entityType": "indexes",
+      "table": "part_of_speech"
+    },
+    {
+      "columns": [
+        {
+          "value": "title",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "word_title_index",
+      "entityType": "indexes",
+      "table": "word"
+    },
+    {
+      "columns": [
+        {
+          "value": "word_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "word_meaning_word_id_index",
+      "entityType": "indexes",
+      "table": "word_meaning"
+    },
+    {
+      "columns": [
+        {
+          "value": "cefr_level_id",
+          "isExpression": false
+        },
+        {
+          "value": "is_recommendable",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "word_meaning_cefr_recommendable_index",
+      "entityType": "indexes",
+      "table": "word_meaning"
+    },
+    {
+      "columns": [
+        {
+          "value": "part_of_speech_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "word_meaning_part_of_speech_index",
+      "entityType": "indexes",
+      "table": "word_meaning"
+    },
+    {
+      "columns": [
+        {
+          "value": "word_meaning_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "word_meaning_examples_word_meaning_id_index",
+      "entityType": "indexes",
+      "table": "word_meaning_example"
+    },
+    {
+      "columns": [
+        {
+          "value": "topic_id",
+          "isExpression": false
+        },
+        {
+          "value": "word_meaning_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "word_meaning_topic_topic_index",
+      "entityType": "indexes",
+      "table": "word_meaning_topic"
+    },
+    {
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "due",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "user_card_meanings_due_index",
+      "entityType": "indexes",
+      "table": "user_fsrs_data"
+    },
+    {
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "word_meaning_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": true,
+      "where": null,
+      "origin": "manual",
+      "name": "user_card_meanings_user_meaning_unique",
+      "entityType": "indexes",
+      "table": "user_fsrs_data"
+    },
+    {
+      "columns": [
+        {
+          "value": "word_meaning_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "user_card_meanings_card_meaning_index",
+      "entityType": "indexes",
+      "table": "user_fsrs_data"
+    },
+    {
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "introduced_at",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "user_fsrs_data_user_introduced_index",
+      "entityType": "indexes",
+      "table": "user_fsrs_data"
+    },
+    {
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "review",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "user_card_meaning_reviews_user_index",
+      "entityType": "indexes",
+      "table": "user_fsrs_review"
+    },
+    {
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "state",
+          "isExpression": false
+        },
+        {
+          "value": "review",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "user_card_meaning_reviews_user_state_index",
+      "entityType": "indexes",
+      "table": "user_fsrs_review"
+    },
+    {
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "word_meaning_id",
+          "isExpression": false
+        },
+        {
+          "value": "review",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "user_fsrs_review_user_meaning_review_index",
+      "entityType": "indexes",
+      "table": "user_fsrs_review"
+    },
+    {
+      "columns": [
+        {
+          "value": "word_meaning_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "user_fsrs_review_meaning_index",
+      "entityType": "indexes",
+      "table": "user_fsrs_review"
+    },
+    {
+      "columns": [
+        {
+          "value": "self_reported_cefr_level_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "user_recommendation_profile_cefr_index",
+      "entityType": "indexes",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "key",
+          "isExpression": false
+        }
+      ],
+      "isUnique": true,
+      "where": null,
+      "origin": "manual",
+      "name": "user_settings_user_key_unique",
+      "entityType": "indexes",
+      "table": "user_settings"
+    },
+    {
+      "columns": [
+        {
+          "value": "topic_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "user_topic_profile_topic_index",
+      "entityType": "indexes",
+      "table": "user_topic_profile"
+    },
+    {
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "word_meaning_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": true,
+      "where": null,
+      "origin": "manual",
+      "name": "user_vocabulary_assessment_user_meaning_unique",
+      "entityType": "indexes",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "assessed_at",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "user_vocabulary_assessment_user_time_index",
+      "entityType": "indexes",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "columns": [
+        {
+          "value": "word_meaning_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "user_vocabulary_assessment_meaning_index",
+      "entityType": "indexes",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "columns": [
+        {
+          "value": "word_meaning_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "user_word_preference_meaning_index",
+      "entityType": "indexes",
+      "table": "user_word_preference"
+    },
+    {
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "batch_id",
+          "isExpression": false
+        },
+        {
+          "value": "position",
+          "isExpression": false
+        }
+      ],
+      "isUnique": true,
+      "where": null,
+      "origin": "manual",
+      "name": "word_recommendation_batch_position_unique",
+      "entityType": "indexes",
+      "table": "word_recommendation"
+    },
+    {
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "batch_id",
+          "isExpression": false
+        },
+        {
+          "value": "word_meaning_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": true,
+      "where": null,
+      "origin": "manual",
+      "name": "word_recommendation_batch_meaning_unique",
+      "entityType": "indexes",
+      "table": "word_recommendation"
+    },
+    {
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "word_meaning_id",
+          "isExpression": false
+        },
+        {
+          "value": "shown_at",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "word_recommendation_user_meaning_shown_index",
+      "entityType": "indexes",
+      "table": "word_recommendation"
+    },
+    {
+      "columns": [
+        {
+          "value": "user_id",
+          "isExpression": false
+        },
+        {
+          "value": "shown_at",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "word_recommendation_user_shown_index",
+      "entityType": "indexes",
+      "table": "word_recommendation"
+    },
+    {
+      "columns": [
+        {
+          "value": "word_meaning_id",
+          "isExpression": false
+        }
+      ],
+      "isUnique": false,
+      "where": null,
+      "origin": "manual",
+      "name": "word_recommendation_meaning_index",
+      "entityType": "indexes",
+      "table": "word_recommendation"
+    },
+    {
+      "columns": [
+        "value"
+      ],
+      "nameExplicit": false,
+      "name": "cefr_level_value_unique",
+      "entityType": "uniques",
+      "table": "cefr_level"
+    },
+    {
+      "columns": [
+        "slug"
+      ],
+      "nameExplicit": false,
+      "name": "topic_slug_unique",
+      "entityType": "uniques",
+      "table": "topic"
+    },
+    {
+      "columns": [
+        "telegram_id"
+      ],
+      "nameExplicit": false,
+      "name": "user_telegram_id_unique",
+      "entityType": "uniques",
+      "table": "user"
+    },
+    {
+      "value": "\"value\" IN ('A1', 'A2', 'B1', 'B2', 'C1', 'C2')",
+      "name": "cefr_level_value_check",
+      "entityType": "checks",
+      "table": "cefr_level"
+    },
+    {
+      "value": "length(trim(\"value\", char(9) || char(10) || char(13) || ' ')) > 0",
+      "name": "part_of_speech_value_check",
+      "entityType": "checks",
+      "table": "part_of_speech"
+    },
+    {
+      "value": "length(trim(\"name\", char(9) || char(10) || char(13) || ' ')) > 0",
+      "name": "topic_name_check",
+      "entityType": "checks",
+      "table": "topic"
+    },
+    {
+      "value": "length(\"slug\") > 0 AND \"slug\" NOT GLOB '*[^a-z0-9-]*' AND \"slug\" NOT LIKE '-%' AND \"slug\" NOT LIKE '%-'",
+      "name": "topic_slug_check",
+      "entityType": "checks",
+      "table": "topic"
+    },
+    {
+      "value": "length(trim(\"title\", char(9) || char(10) || char(13) || ' ')) > 0",
+      "name": "word_title_check",
+      "entityType": "checks",
+      "table": "word"
+    },
+    {
+      "value": "\"frequency_rank\" IS NULL OR (typeof(\"frequency_rank\") = 'integer' AND \"frequency_rank\" >= 0 AND \"frequency_rank\" >= 1)",
+      "name": "word_frequency_rank_check",
+      "entityType": "checks",
+      "table": "word"
+    },
+    {
+      "value": "\"frequency_rank\" IS NULL OR (\"frequency_source\" IS NOT NULL AND length(trim(\"frequency_source\", char(9) || char(10) || char(13) || ' ')) > 0)",
+      "name": "word_frequency_source_check",
+      "entityType": "checks",
+      "table": "word"
+    },
+    {
+      "value": "\"is_recommendable\" IN (0, 1)",
+      "name": "word_meaning_recommendable_check",
+      "entityType": "checks",
+      "table": "word_meaning"
+    },
+    {
+      "value": "length(trim(\"meaning\", char(9) || char(10) || char(13) || ' ')) > 0",
+      "name": "word_meaning_meaning_check",
+      "entityType": "checks",
+      "table": "word_meaning"
+    },
+    {
+      "value": "length(trim(\"meaning_translation\", char(9) || char(10) || char(13) || ' ')) > 0",
+      "name": "word_meaning_translation_check",
+      "entityType": "checks",
+      "table": "word_meaning"
+    },
+    {
+      "value": "\"vocabulary_difficulty\" IS NULL OR \"vocabulary_difficulty\" BETWEEN -1.7976931348623157e308 AND 1.7976931348623157e308",
+      "name": "word_meaning_difficulty_check",
+      "entityType": "checks",
+      "table": "word_meaning"
+    },
+    {
+      "value": "length(trim(\"example\", char(9) || char(10) || char(13) || ' ')) > 0",
+      "name": "word_meaning_example_text_check",
+      "entityType": "checks",
+      "table": "word_meaning_example"
+    },
+    {
+      "value": "length(trim(\"example_translation\", char(9) || char(10) || char(13) || ' ')) > 0",
+      "name": "word_meaning_example_translation_check",
+      "entityType": "checks",
+      "table": "word_meaning_example"
+    },
+    {
+      "value": "\"relevance\" > 0 AND \"relevance\" <= 1",
+      "name": "word_meaning_topic_relevance_check",
+      "entityType": "checks",
+      "table": "word_meaning_topic"
+    },
+    {
+      "value": "typeof(\"telegram_id\") = 'integer' AND \"telegram_id\" >= 0 AND \"telegram_id\" BETWEEN 1 AND 9007199254740991",
+      "name": "user_telegram_id_check",
+      "entityType": "checks",
+      "table": "user"
+    },
+    {
+      "value": "\"is_admin\" IN (0, 1)",
+      "name": "user_is_admin_check",
+      "entityType": "checks",
+      "table": "user"
+    },
+    {
+      "value": "\"state\" IN (0, 1, 2, 3)",
+      "name": "user_fsrs_data_state_check",
+      "entityType": "checks",
+      "table": "user_fsrs_data"
+    },
+    {
+      "value": "(\"state\" = 0 AND \"stability\" = 0 AND \"difficulty\" = 0) OR (\"state\" <> 0 AND \"stability\" > 0 AND \"stability\" BETWEEN -1.7976931348623157e308 AND 1.7976931348623157e308 AND \"difficulty\" BETWEEN 1 AND 10)",
+      "name": "user_fsrs_data_memory_check",
+      "entityType": "checks",
+      "table": "user_fsrs_data"
+    },
+    {
+      "value": "typeof(\"reps\") = 'integer' AND \"reps\" >= 0 AND typeof(\"lapses\") = 'integer' AND \"lapses\" >= 0 AND \"lapses\" <= \"reps\" AND typeof(\"learning_steps\") = 'integer' AND \"learning_steps\" >= 0",
+      "name": "user_fsrs_data_counters_check",
+      "entityType": "checks",
+      "table": "user_fsrs_data"
+    },
+    {
+      "value": "typeof(\"elapsed_days\") = 'integer' AND \"elapsed_days\" >= 0 AND typeof(\"scheduled_days\") = 'integer' AND \"scheduled_days\" >= 0",
+      "name": "user_fsrs_data_intervals_check",
+      "entityType": "checks",
+      "table": "user_fsrs_data"
+    },
+    {
+      "value": "typeof(\"due\") = 'integer' AND \"due\" >= 0 AND \"due\" <= 8640000000000000 AND (\"last_review\" IS NULL OR typeof(\"last_review\") = 'integer' AND \"last_review\" >= 0 AND \"last_review\" <= 8640000000000000) AND (\"introduced_at\" IS NULL OR typeof(\"introduced_at\") = 'integer' AND \"introduced_at\" >= 0 AND \"introduced_at\" <= 8640000000000000)",
+      "name": "user_fsrs_data_dates_check",
+      "entityType": "checks",
+      "table": "user_fsrs_data"
+    },
+    {
+      "value": "\"state\" = 0 OR \"last_review\" IS NOT NULL",
+      "name": "user_fsrs_data_last_review_check",
+      "entityType": "checks",
+      "table": "user_fsrs_data"
+    },
+    {
+      "value": "\"rating\" IN (0, 1, 2, 3, 4)",
+      "name": "user_fsrs_review_rating_check",
+      "entityType": "checks",
+      "table": "user_fsrs_review"
+    },
+    {
+      "value": "\"state\" IN (0, 1, 2, 3)",
+      "name": "user_fsrs_review_state_check",
+      "entityType": "checks",
+      "table": "user_fsrs_review"
+    },
+    {
+      "value": "(\"state\" = 0 AND \"stability\" = 0 AND \"difficulty\" = 0) OR (\"state\" <> 0 AND \"stability\" > 0 AND \"stability\" BETWEEN -1.7976931348623157e308 AND 1.7976931348623157e308 AND \"difficulty\" BETWEEN 1 AND 10)",
+      "name": "user_fsrs_review_memory_check",
+      "entityType": "checks",
+      "table": "user_fsrs_review"
+    },
+    {
+      "value": "typeof(\"scheduled_days\") = 'integer' AND \"scheduled_days\" >= 0 AND typeof(\"elapsed_days\") = 'integer' AND \"elapsed_days\" >= 0 AND typeof(\"last_elapsed_days\") = 'integer' AND \"last_elapsed_days\" >= 0 AND typeof(\"learning_steps\") = 'integer' AND \"learning_steps\" >= 0",
+      "name": "user_fsrs_review_intervals_check",
+      "entityType": "checks",
+      "table": "user_fsrs_review"
+    },
+    {
+      "value": "typeof(\"due\") = 'integer' AND \"due\" >= 0 AND \"due\" <= 8640000000000000 AND typeof(\"review\") = 'integer' AND \"review\" >= 0 AND \"review\" <= 8640000000000000",
+      "name": "user_fsrs_review_dates_check",
+      "entityType": "checks",
+      "table": "user_fsrs_review"
+    },
+    {
+      "value": "\"retrievability_before\" IS NULL OR \"retrievability_before\" BETWEEN 0 AND 1",
+      "name": "user_fsrs_review_retrievability_check",
+      "entityType": "checks",
+      "table": "user_fsrs_review"
+    },
+    {
+      "value": "\"assessment_weight\" >= 0 AND \"assessment_weight\" BETWEEN -1.7976931348623157e308 AND 1.7976931348623157e308",
+      "name": "user_recommendation_profile_assessment_weight_check",
+      "entityType": "checks",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "value": "typeof(\"daily_new_meaning_limit\") = 'integer' AND \"daily_new_meaning_limit\" >= 0",
+      "name": "user_recommendation_profile_daily_limit_check",
+      "entityType": "checks",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "value": "\"exploration_rate\" BETWEEN 0 AND 1",
+      "name": "user_recommendation_profile_exploration_check",
+      "entityType": "checks",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "value": "\"vocabulary_ability\" BETWEEN -1.7976931348623157e308 AND 1.7976931348623157e308",
+      "name": "user_recommendation_profile_ability_check",
+      "entityType": "checks",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "value": "length(trim(\"timezone\", char(9) || char(10) || char(13) || ' ')) > 0",
+      "name": "user_recommendation_profile_timezone_check",
+      "entityType": "checks",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "value": "length(trim(\"algorithm_version\", char(9) || char(10) || char(13) || ' ')) > 0",
+      "name": "user_recommendation_profile_version_check",
+      "entityType": "checks",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "value": "\"stats_updated_at\" IS NULL OR typeof(\"stats_updated_at\") = 'integer' AND \"stats_updated_at\" >= 0 AND \"stats_updated_at\" <= 8640000000000000",
+      "name": "user_recommendation_profile_stats_date_check",
+      "entityType": "checks",
+      "table": "user_recommendation_profile"
+    },
+    {
+      "value": "length(trim(\"key\", char(9) || char(10) || char(13) || ' ')) > 0",
+      "name": "user_settings_key_check",
+      "entityType": "checks",
+      "table": "user_settings"
+    },
+    {
+      "value": "\"interest_weight\" BETWEEN -1 AND 1",
+      "name": "user_topic_profile_interest_check",
+      "entityType": "checks",
+      "table": "user_topic_profile"
+    },
+    {
+      "value": "\"is_blocked\" IN (0, 1)",
+      "name": "user_topic_profile_blocked_check",
+      "entityType": "checks",
+      "table": "user_topic_profile"
+    },
+    {
+      "value": "\"assessment_weight\" >= 0 AND \"assessment_weight\" BETWEEN -1.7976931348623157e308 AND 1.7976931348623157e308 AND \"recall_weight\" >= 0 AND \"recall_weight\" BETWEEN -1.7976931348623157e308 AND 1.7976931348623157e308 AND typeof(\"distinct_reviewed_meanings\") = 'integer' AND \"distinct_reviewed_meanings\" >= 0",
+      "name": "user_topic_profile_evidence_check",
+      "entityType": "checks",
+      "table": "user_topic_profile"
+    },
+    {
+      "value": "abs(\"recall_residual_sum\") <= \"recall_weight\" + 0.000001",
+      "name": "user_topic_profile_residual_check",
+      "entityType": "checks",
+      "table": "user_topic_profile"
+    },
+    {
+      "value": "\"vocabulary_ability_offset\" BETWEEN -1.7976931348623157e308 AND 1.7976931348623157e308",
+      "name": "user_topic_profile_ability_check",
+      "entityType": "checks",
+      "table": "user_topic_profile"
+    },
+    {
+      "value": "\"stats_updated_at\" IS NULL OR typeof(\"stats_updated_at\") = 'integer' AND \"stats_updated_at\" >= 0 AND \"stats_updated_at\" <= 8640000000000000",
+      "name": "user_topic_profile_stats_date_check",
+      "entityType": "checks",
+      "table": "user_topic_profile"
+    },
+    {
+      "value": "\"knew_before\" IN (0, 1)",
+      "name": "user_vocabulary_assessment_knew_check",
+      "entityType": "checks",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "value": "\"source\" IN ('recognition_test', 'self_report')",
+      "name": "user_vocabulary_assessment_source_check",
+      "entityType": "checks",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "value": "json_valid(\"topic_weights\") AND json_type(\"topic_weights\") = 'array'",
+      "name": "user_vocabulary_assessment_topics_check",
+      "entityType": "checks",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "value": "\"vocabulary_difficulty\" BETWEEN -1.7976931348623157e308 AND 1.7976931348623157e308",
+      "name": "user_vocabulary_assessment_difficulty_check",
+      "entityType": "checks",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "value": "typeof(\"assessed_at\") = 'integer' AND \"assessed_at\" >= 0 AND \"assessed_at\" <= 8640000000000000",
+      "name": "user_vocabulary_assessment_date_check",
+      "entityType": "checks",
+      "table": "user_vocabulary_assessment"
+    },
+    {
+      "value": "\"status\" IN ('known', 'ignored', 'snoozed')",
+      "name": "user_word_preference_status_check",
+      "entityType": "checks",
+      "table": "user_word_preference"
+    },
+    {
+      "value": "(\"status\" = 'snoozed' AND \"snoozed_until\" IS NOT NULL) OR (\"status\" <> 'snoozed' AND \"snoozed_until\" IS NULL)",
+      "name": "user_word_preference_snooze_check",
+      "entityType": "checks",
+      "table": "user_word_preference"
+    },
+    {
+      "value": "typeof(\"created_at\") = 'integer' AND \"created_at\" >= 0 AND \"created_at\" <= 8640000000000000 AND typeof(\"updated_at\") = 'integer' AND \"updated_at\" >= 0 AND \"updated_at\" <= 8640000000000000 AND \"updated_at\" >= \"created_at\" AND (\"snoozed_until\" IS NULL OR (typeof(\"snoozed_until\") = 'integer' AND \"snoozed_until\" >= 0 AND \"snoozed_until\" <= 8640000000000000 AND \"snoozed_until\" > \"created_at\"))",
+      "name": "user_word_preference_dates_check",
+      "entityType": "checks",
+      "table": "user_word_preference"
+    },
+    {
+      "value": "typeof(\"position\") = 'integer' AND \"position\" >= 0 AND \"position\" >= 1",
+      "name": "word_recommendation_position_check",
+      "entityType": "checks",
+      "table": "word_recommendation"
+    },
+    {
+      "value": "\"predicted_known_probability\" BETWEEN 0 AND 1 AND \"selection_probability\" > 0 AND \"selection_probability\" <= 1",
+      "name": "word_recommendation_probability_check",
+      "entityType": "checks",
+      "table": "word_recommendation"
+    },
+    {
+      "value": "\"reason\" IN ('level_match', 'interest', 'weak_topic', 'exploration')",
+      "name": "word_recommendation_reason_check",
+      "entityType": "checks",
+      "table": "word_recommendation"
+    },
+    {
+      "value": "\"feedback\" IS NULL OR \"feedback\" IN ('accepted', 'already_known', 'skipped', 'too_difficult', 'not_interested')",
+      "name": "word_recommendation_feedback_check",
+      "entityType": "checks",
+      "table": "word_recommendation"
+    },
+    {
+      "value": "(\"feedback\" IS NULL AND \"feedback_at\" IS NULL) OR (\"feedback\" IS NOT NULL AND \"feedback_at\" IS NOT NULL AND \"shown_at\" IS NOT NULL AND \"feedback_at\" >= \"shown_at\")",
+      "name": "word_recommendation_feedback_time_check",
+      "entityType": "checks",
+      "table": "word_recommendation"
+    },
+    {
+      "value": "\"expires_at\" > \"created_at\" AND (\"shown_at\" IS NULL OR (\"shown_at\" >= \"created_at\" AND \"shown_at\" <= \"expires_at\"))",
+      "name": "word_recommendation_lifetime_check",
+      "entityType": "checks",
+      "table": "word_recommendation"
+    },
+    {
+      "value": "json_valid(\"score_components\") AND json_type(\"score_components\") = 'object'",
+      "name": "word_recommendation_components_check",
+      "entityType": "checks",
+      "table": "word_recommendation"
+    },
+    {
+      "value": "\"score\" BETWEEN -1.7976931348623157e308 AND 1.7976931348623157e308",
+      "name": "word_recommendation_score_check",
+      "entityType": "checks",
+      "table": "word_recommendation"
+    },
+    {
+      "value": "length(trim(\"batch_id\", char(9) || char(10) || char(13) || ' ')) > 0",
+      "name": "word_recommendation_batch_check",
+      "entityType": "checks",
+      "table": "word_recommendation"
+    },
+    {
+      "value": "length(trim(\"algorithm_version\", char(9) || char(10) || char(13) || ' ')) > 0",
+      "name": "word_recommendation_version_check",
+      "entityType": "checks",
+      "table": "word_recommendation"
+    },
+    {
+      "value": "typeof(\"created_at\") = 'integer' AND \"created_at\" >= 0 AND \"created_at\" <= 8640000000000000 AND typeof(\"expires_at\") = 'integer' AND \"expires_at\" >= 0 AND \"expires_at\" <= 8640000000000000 AND (\"shown_at\" IS NULL OR typeof(\"shown_at\") = 'integer' AND \"shown_at\" >= 0 AND \"shown_at\" <= 8640000000000000) AND (\"feedback_at\" IS NULL OR typeof(\"feedback_at\") = 'integer' AND \"feedback_at\" >= 0 AND \"feedback_at\" <= 8640000000000000)",
+      "name": "word_recommendation_dates_check",
+      "entityType": "checks",
+      "table": "word_recommendation"
+    }
+  ],
+  "renames": []
+}

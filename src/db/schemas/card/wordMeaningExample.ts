@@ -1,5 +1,12 @@
-import { index, integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import {
+  check,
+  index,
+  integer,
+  sqliteTable,
+  text,
+} from "drizzle-orm/sqlite-core";
 import { wordMeaningTable } from "./wordMeaning";
+import { nonBlankText } from "../../schemaChecks";
 
 export const wordMeaningExampleTable = sqliteTable(
   "word_meaning_example",
@@ -19,6 +26,11 @@ export const wordMeaningExampleTable = sqliteTable(
   (table) => [
     index("word_meaning_examples_word_meaning_id_index").on(
       table.wordMeaningId,
+    ),
+    check("word_meaning_example_text_check", nonBlankText(table.example)),
+    check(
+      "word_meaning_example_translation_check",
+      nonBlankText(table.exampleTranslation),
     ),
   ],
 );

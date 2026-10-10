@@ -1,0 +1,16 @@
+export { wordTable } from "./schemas/card/word";
+export { wordMeaningTable } from "./schemas/card/wordMeaning";
+export { wordMeaningExampleTable } from "./schemas/card/wordMeaningExample";
+export { cefrLevelTable } from "./schemas/card/cefrLevel";
+export { partOfSpeechTable } from "./schemas/card/partOfSpeech";
+export { topicTable } from "./schemas/card/topic";
+export { wordMeaningTopicTable } from "./schemas/card/wordMeaningTopic";
+export { userTable } from "./schemas/user/user";
+export { userSettingsTable } from "./schemas/user/userSettings";
+export { userFsrsDataTable } from "./schemas/user/userFsrsData";
+export { userFsrsReviewTable } from "./schemas/user/userFsrsReview";
+export { userRecommendationProfileTable } from "./schemas/user/userRecommendationProfile";
+export { userTopicProfileTable } from "./schemas/user/userTopicProfile";
+export { userVocabularyAssessmentTable } from "./schemas/user/userVocabularyAssessment";
+export { userWordPreferenceTable } from "./schemas/user/userWordPreference";
+export { wordRecommendationTable } from "./schemas/user/wordRecommendation";
