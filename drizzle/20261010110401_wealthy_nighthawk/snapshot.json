@@ -1,33 +1,29 @@
 {
   "version": "7",
   "dialect": "sqlite",
-  "id": "dbe125f1-7cd8-4a20-922e-e832ab5f3501",
+  "id": "b2f12aec-540d-41ae-992b-a1bd7cfd854a",
   "prevIds": [
     "00000000-0000-0000-0000-000000000000"
   ],
   "ddl": [
     {
-      "name": "attribute",
+      "name": "cefr_level",
       "entityType": "tables"
     },
     {
-      "name": "card",
+      "name": "part_of_speech",
       "entityType": "tables"
     },
     {
-      "name": "card_example",
+      "name": "word",
       "entityType": "tables"
     },
     {
-      "name": "card_meaning",
+      "name": "word_meaning",
       "entityType": "tables"
     },
     {
-      "name": "card_meaning_attribute",
-      "entityType": "tables"
-    },
-    {
-      "name": "deck",
+      "name": "word_meaning_example",
       "entityType": "tables"
     },
     {
@@ -35,15 +31,11 @@
       "entityType": "tables"
     },
     {
-      "name": "user_card_meaning",
+      "name": "user_fsrs_data",
       "entityType": "tables"
     },
     {
-      "name": "user_card_meaning_review",
-      "entityType": "tables"
-    },
-    {
-      "name": "user_deck",
+      "name": "user_fsrs_review",
       "entityType": "tables"
     },
     {
@@ -58,247 +50,7 @@
       "generated": null,
       "name": "id",
       "entityType": "columns",
-      "table": "attribute"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "name",
-      "entityType": "columns",
-      "table": "attribute"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": "(CURRENT_TIMESTAMP)",
-      "generated": null,
-      "name": "created_at",
-      "entityType": "columns",
-      "table": "attribute"
-    },
-    {
-      "type": "text",
-      "notNull": false,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "updated_at",
-      "entityType": "columns",
-      "table": "attribute"
-    },
-    {
-      "type": "integer",
-      "notNull": false,
-      "autoincrement": true,
-      "default": null,
-      "generated": null,
-      "name": "id",
-      "entityType": "columns",
-      "table": "card"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "deck_id",
-      "entityType": "columns",
-      "table": "card"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "title",
-      "entityType": "columns",
-      "table": "card"
-    },
-    {
-      "type": "text",
-      "notNull": false,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "transcription",
-      "entityType": "columns",
-      "table": "card"
-    },
-    {
-      "type": "text",
-      "notNull": false,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "audio_url",
-      "entityType": "columns",
-      "table": "card"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": "(CURRENT_TIMESTAMP)",
-      "generated": null,
-      "name": "created_at",
-      "entityType": "columns",
-      "table": "card"
-    },
-    {
-      "type": "text",
-      "notNull": false,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "updated_at",
-      "entityType": "columns",
-      "table": "card"
-    },
-    {
-      "type": "integer",
-      "notNull": false,
-      "autoincrement": true,
-      "default": null,
-      "generated": null,
-      "name": "id",
-      "entityType": "columns",
-      "table": "card_example"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "card_meaning_id",
-      "entityType": "columns",
-      "table": "card_example"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "example",
-      "entityType": "columns",
-      "table": "card_example"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "example_translation",
-      "entityType": "columns",
-      "table": "card_example"
-    },
-    {
-      "type": "integer",
-      "notNull": false,
-      "autoincrement": true,
-      "default": null,
-      "generated": null,
-      "name": "id",
-      "entityType": "columns",
-      "table": "card_meaning"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "card_id",
-      "entityType": "columns",
-      "table": "card_meaning"
-    },
-    {
-      "type": "text",
-      "notNull": false,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "hint",
-      "entityType": "columns",
-      "table": "card_meaning"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "meaning",
-      "entityType": "columns",
-      "table": "card_meaning"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "meaning_translation",
-      "entityType": "columns",
-      "table": "card_meaning"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": "(CURRENT_TIMESTAMP)",
-      "generated": null,
-      "name": "created_at",
-      "entityType": "columns",
-      "table": "card_meaning"
-    },
-    {
-      "type": "text",
-      "notNull": false,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "updated_at",
-      "entityType": "columns",
-      "table": "card_meaning"
-    },
-    {
-      "type": "integer",
-      "notNull": false,
-      "autoincrement": true,
-      "default": null,
-      "generated": null,
-      "name": "id",
-      "entityType": "columns",
-      "table": "card_meaning_attribute"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "card_meaning_id",
-      "entityType": "columns",
-      "table": "card_meaning_attribute"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "attribute_id",
-      "entityType": "columns",
-      "table": "card_meaning_attribute"
+      "table": "cefr_level"
     },
     {
       "type": "text",
@@ -308,27 +60,7 @@
       "generated": null,
       "name": "value",
       "entityType": "columns",
-      "table": "card_meaning_attribute"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": "(CURRENT_TIMESTAMP)",
-      "generated": null,
-      "name": "created_at",
-      "entityType": "columns",
-      "table": "card_meaning_attribute"
-    },
-    {
-      "type": "text",
-      "notNull": false,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "updated_at",
-      "entityType": "columns",
-      "table": "card_meaning_attribute"
+      "table": "cefr_level"
     },
     {
       "type": "integer",
@@ -338,7 +70,7 @@
       "generated": null,
       "name": "id",
       "entityType": "columns",
-      "table": "deck"
+      "table": "part_of_speech"
     },
     {
       "type": "text",
@@ -346,9 +78,49 @@
       "autoincrement": false,
       "default": null,
       "generated": null,
-      "name": "name",
+      "name": "value",
       "entityType": "columns",
-      "table": "deck"
+      "table": "part_of_speech"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "word"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "title",
+      "entityType": "columns",
+      "table": "word"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "transcription",
+      "entityType": "columns",
+      "table": "word"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "audio_url",
+      "entityType": "columns",
+      "table": "word"
     },
     {
       "type": "text",
@@ -358,7 +130,7 @@
       "generated": null,
       "name": "created_at",
       "entityType": "columns",
-      "table": "deck"
+      "table": "word"
     },
     {
       "type": "text",
@@ -368,7 +140,137 @@
       "generated": null,
       "name": "updated_at",
       "entityType": "columns",
-      "table": "deck"
+      "table": "word"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "word_id",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "part_of_speech_id",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "cefr_level_id",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "hint",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "meaning",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "meaning_translation",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": "(CURRENT_TIMESTAMP)",
+      "generated": null,
+      "name": "created_at",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "text",
+      "notNull": false,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "updated_at",
+      "entityType": "columns",
+      "table": "word_meaning"
+    },
+    {
+      "type": "integer",
+      "notNull": false,
+      "autoincrement": true,
+      "default": null,
+      "generated": null,
+      "name": "id",
+      "entityType": "columns",
+      "table": "word_meaning_example"
+    },
+    {
+      "type": "integer",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "word_meaning_id",
+      "entityType": "columns",
+      "table": "word_meaning_example"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "example",
+      "entityType": "columns",
+      "table": "word_meaning_example"
+    },
+    {
+      "type": "text",
+      "notNull": true,
+      "autoincrement": false,
+      "default": null,
+      "generated": null,
+      "name": "example_translation",
+      "entityType": "columns",
+      "table": "word_meaning_example"
     },
     {
       "type": "integer",
@@ -458,7 +360,7 @@
       "generated": null,
       "name": "id",
       "entityType": "columns",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "type": "integer",
@@ -468,7 +370,7 @@
       "generated": null,
       "name": "user_id",
       "entityType": "columns",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "type": "integer",
@@ -476,9 +378,9 @@
       "autoincrement": false,
       "default": null,
       "generated": null,
-      "name": "card_meaning_id",
+      "name": "word_meaning_id",
       "entityType": "columns",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "type": "integer",
@@ -488,7 +390,7 @@
       "generated": null,
       "name": "due",
       "entityType": "columns",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "type": "real",
@@ -498,7 +400,7 @@
       "generated": null,
       "name": "stability",
       "entityType": "columns",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "type": "real",
@@ -508,7 +410,7 @@
       "generated": null,
       "name": "difficulty",
       "entityType": "columns",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "type": "integer",
@@ -518,7 +420,7 @@
       "generated": null,
       "name": "elapsed_days",
       "entityType": "columns",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "type": "integer",
@@ -528,7 +430,7 @@
       "generated": null,
       "name": "scheduled_days",
       "entityType": "columns",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "type": "integer",
@@ -538,7 +440,7 @@
       "generated": null,
       "name": "learning_steps",
       "entityType": "columns",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "type": "integer",
@@ -548,7 +450,7 @@
       "generated": null,
       "name": "reps",
       "entityType": "columns",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "type": "integer",
@@ -558,7 +460,7 @@
       "generated": null,
       "name": "lapses",
       "entityType": "columns",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "type": "integer",
@@ -568,7 +470,7 @@
       "generated": null,
       "name": "state",
       "entityType": "columns",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "type": "integer",
@@ -578,7 +480,7 @@
       "generated": null,
       "name": "last_review",
       "entityType": "columns",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "type": "integer",
@@ -588,7 +490,7 @@
       "generated": null,
       "name": "id",
       "entityType": "columns",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_review"
     },
     {
       "type": "integer",
@@ -598,7 +500,7 @@
       "generated": null,
       "name": "user_id",
       "entityType": "columns",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_review"
     },
     {
       "type": "integer",
@@ -606,19 +508,9 @@
       "autoincrement": false,
       "default": null,
       "generated": null,
-      "name": "card_meaning_id",
+      "name": "word_meaning_id",
       "entityType": "columns",
-      "table": "user_card_meaning_review"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "user_card_meaning_id",
-      "entityType": "columns",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_review"
     },
     {
       "type": "integer",
@@ -628,7 +520,7 @@
       "generated": null,
       "name": "rating",
       "entityType": "columns",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_review"
     },
     {
       "type": "integer",
@@ -638,7 +530,7 @@
       "generated": null,
       "name": "state",
       "entityType": "columns",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_review"
     },
     {
       "type": "integer",
@@ -648,7 +540,7 @@
       "generated": null,
       "name": "due",
       "entityType": "columns",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_review"
     },
     {
       "type": "real",
@@ -658,7 +550,7 @@
       "generated": null,
       "name": "stability",
       "entityType": "columns",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_review"
     },
     {
       "type": "real",
@@ -668,7 +560,7 @@
       "generated": null,
       "name": "difficulty",
       "entityType": "columns",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_review"
     },
     {
       "type": "integer",
@@ -678,7 +570,7 @@
       "generated": null,
       "name": "scheduled_days",
       "entityType": "columns",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_review"
     },
     {
       "type": "integer",
@@ -688,7 +580,7 @@
       "generated": null,
       "name": "elapsed_days",
       "entityType": "columns",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_review"
     },
     {
       "type": "integer",
@@ -698,7 +590,7 @@
       "generated": null,
       "name": "last_elapsed_days",
       "entityType": "columns",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_review"
     },
     {
       "type": "integer",
@@ -708,7 +600,7 @@
       "generated": null,
       "name": "learning_steps",
       "entityType": "columns",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_review"
     },
     {
       "type": "integer",
@@ -718,57 +610,7 @@
       "generated": null,
       "name": "review",
       "entityType": "columns",
-      "table": "user_card_meaning_review"
-    },
-    {
-      "type": "integer",
-      "notNull": false,
-      "autoincrement": true,
-      "default": null,
-      "generated": null,
-      "name": "id",
-      "entityType": "columns",
-      "table": "user_deck"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "user_id",
-      "entityType": "columns",
-      "table": "user_deck"
-    },
-    {
-      "type": "integer",
-      "notNull": true,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "deck_id",
-      "entityType": "columns",
-      "table": "user_deck"
-    },
-    {
-      "type": "text",
-      "notNull": true,
-      "autoincrement": false,
-      "default": "(CURRENT_TIMESTAMP)",
-      "generated": null,
-      "name": "created_at",
-      "entityType": "columns",
-      "table": "user_deck"
-    },
-    {
-      "type": "integer",
-      "notNull": false,
-      "autoincrement": false,
-      "default": null,
-      "generated": null,
-      "name": "last_reviewed_at",
-      "entityType": "columns",
-      "table": "user_deck"
+      "table": "user_fsrs_review"
     },
     {
       "type": "integer",
@@ -802,78 +644,63 @@
     },
     {
       "columns": [
-        "deck_id"
+        "word_id"
       ],
-      "tableTo": "deck",
-      "columnsTo": [
-        "id"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "RESTRICT",
-      "nameExplicit": false,
-      "name": "fk_card_deck_id_deck_id_fk",
-      "entityType": "fks",
-      "table": "card"
-    },
-    {
-      "columns": [
-        "card_meaning_id"
-      ],
-      "tableTo": "card_meaning",
+      "tableTo": "word",
       "columnsTo": [
         "id"
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": false,
-      "name": "fk_card_example_card_meaning_id_card_meaning_id_fk",
+      "name": "fk_word_meaning_word_id_word_id_fk",
       "entityType": "fks",
-      "table": "card_example"
+      "table": "word_meaning"
     },
     {
       "columns": [
-        "card_id"
+        "part_of_speech_id"
       ],
-      "tableTo": "card",
+      "tableTo": "part_of_speech",
       "columnsTo": [
         "id"
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": false,
-      "name": "fk_card_meaning_card_id_card_id_fk",
+      "name": "fk_word_meaning_part_of_speech_id_part_of_speech_id_fk",
       "entityType": "fks",
-      "table": "card_meaning"
+      "table": "word_meaning"
     },
     {
       "columns": [
-        "card_meaning_id"
+        "cefr_level_id"
       ],
-      "tableTo": "card_meaning",
+      "tableTo": "cefr_level",
       "columnsTo": [
         "id"
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": false,
-      "name": "fk_card_meaning_attribute_card_meaning_id_card_meaning_id_fk",
+      "name": "fk_word_meaning_cefr_level_id_cefr_level_id_fk",
       "entityType": "fks",
-      "table": "card_meaning_attribute"
+      "table": "word_meaning"
     },
     {
       "columns": [
-        "attribute_id"
+        "word_meaning_id"
       ],
-      "tableTo": "attribute",
+      "tableTo": "word_meaning",
       "columnsTo": [
         "id"
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": false,
-      "name": "fk_card_meaning_attribute_attribute_id_attribute_id_fk",
+      "name": "fk_word_meaning_example_word_meaning_id_word_meaning_id_fk",
       "entityType": "fks",
-      "table": "card_meaning_attribute"
+      "table": "word_meaning_example"
     },
     {
       "columns": [
@@ -886,69 +713,24 @@
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": false,
-      "name": "fk_user_card_meaning_user_id_user_id_fk",
+      "name": "fk_user_fsrs_data_user_id_user_id_fk",
       "entityType": "fks",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "columns": [
-        "card_meaning_id"
+        "word_meaning_id"
       ],
-      "tableTo": "card_meaning",
+      "tableTo": "word_meaning",
       "columnsTo": [
         "id"
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": false,
-      "name": "fk_user_card_meaning_card_meaning_id_card_meaning_id_fk",
+      "name": "fk_user_fsrs_data_word_meaning_id_word_meaning_id_fk",
       "entityType": "fks",
-      "table": "user_card_meaning"
-    },
-    {
-      "columns": [
-        "user_id"
-      ],
-      "tableTo": "user",
-      "columnsTo": [
-        "id"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "CASCADE",
-      "nameExplicit": false,
-      "name": "fk_user_card_meaning_review_user_id_user_id_fk",
-      "entityType": "fks",
-      "table": "user_card_meaning_review"
-    },
-    {
-      "columns": [
-        "card_meaning_id"
-      ],
-      "tableTo": "card_meaning",
-      "columnsTo": [
-        "id"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "CASCADE",
-      "nameExplicit": false,
-      "name": "fk_user_card_meaning_review_card_meaning_id_card_meaning_id_fk",
-      "entityType": "fks",
-      "table": "user_card_meaning_review"
-    },
-    {
-      "columns": [
-        "user_card_meaning_id"
-      ],
-      "tableTo": "user_card_meaning",
-      "columnsTo": [
-        "id"
-      ],
-      "onUpdate": "NO ACTION",
-      "onDelete": "CASCADE",
-      "nameExplicit": false,
-      "name": "fk_user_card_meaning_review_user_card_meaning_id_user_card_meaning_id_fk",
-      "entityType": "fks",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_data"
     },
     {
       "columns": [
@@ -961,24 +743,24 @@
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": false,
-      "name": "fk_user_deck_user_id_user_id_fk",
+      "name": "fk_user_fsrs_review_user_id_user_id_fk",
       "entityType": "fks",
-      "table": "user_deck"
+      "table": "user_fsrs_review"
     },
     {
       "columns": [
-        "deck_id"
+        "word_meaning_id"
       ],
-      "tableTo": "deck",
+      "tableTo": "word_meaning",
       "columnsTo": [
         "id"
       ],
       "onUpdate": "NO ACTION",
       "onDelete": "CASCADE",
       "nameExplicit": false,
-      "name": "fk_user_deck_deck_id_deck_id_fk",
+      "name": "fk_user_fsrs_review_word_meaning_id_word_meaning_id_fk",
       "entityType": "fks",
-      "table": "user_deck"
+      "table": "user_fsrs_review"
     },
     {
       "columns": [
@@ -1000,8 +782,8 @@
         "id"
       ],
       "nameExplicit": false,
-      "name": "attribute_pk",
-      "table": "attribute",
+      "name": "cefr_level_pk",
+      "table": "cefr_level",
       "entityType": "pks"
     },
     {
@@ -1009,8 +791,8 @@
         "id"
       ],
       "nameExplicit": false,
-      "name": "card_pk",
-      "table": "card",
+      "name": "part_of_speech_pk",
+      "table": "part_of_speech",
       "entityType": "pks"
     },
     {
@@ -1018,8 +800,8 @@
         "id"
       ],
       "nameExplicit": false,
-      "name": "card_example_pk",
-      "table": "card_example",
+      "name": "word_pk",
+      "table": "word",
       "entityType": "pks"
     },
     {
@@ -1027,8 +809,8 @@
         "id"
       ],
       "nameExplicit": false,
-      "name": "card_meaning_pk",
-      "table": "card_meaning",
+      "name": "word_meaning_pk",
+      "table": "word_meaning",
       "entityType": "pks"
     },
     {
@@ -1036,17 +818,8 @@
         "id"
       ],
       "nameExplicit": false,
-      "name": "card_meaning_attribute_pk",
-      "table": "card_meaning_attribute",
-      "entityType": "pks"
-    },
-    {
-      "columns": [
-        "id"
-      ],
-      "nameExplicit": false,
-      "name": "deck_pk",
-      "table": "deck",
+      "name": "word_meaning_example_pk",
+      "table": "word_meaning_example",
       "entityType": "pks"
     },
     {
@@ -1063,8 +836,8 @@
         "id"
       ],
       "nameExplicit": false,
-      "name": "user_card_meaning_pk",
-      "table": "user_card_meaning",
+      "name": "user_fsrs_data_pk",
+      "table": "user_fsrs_data",
       "entityType": "pks"
     },
     {
@@ -1072,17 +845,8 @@
         "id"
       ],
       "nameExplicit": false,
-      "name": "user_card_meaning_review_pk",
-      "table": "user_card_meaning_review",
-      "entityType": "pks"
-    },
-    {
-      "columns": [
-        "id"
-      ],
-      "nameExplicit": false,
-      "name": "user_deck_pk",
-      "table": "user_deck",
+      "name": "user_fsrs_review_pk",
+      "table": "user_fsrs_review",
       "entityType": "pks"
     },
     {
@@ -1097,80 +861,30 @@
     {
       "columns": [
         {
-          "value": "deck_id",
+          "value": "word_id",
           "isExpression": false
         }
       ],
       "isUnique": false,
       "where": null,
       "origin": "manual",
-      "name": "cards_deck_id_index",
+      "name": "word_meaning_word_id_index",
       "entityType": "indexes",
-      "table": "card"
+      "table": "word_meaning"
     },
     {
       "columns": [
         {
-          "value": "card_meaning_id",
+          "value": "word_meaning_id",
           "isExpression": false
         }
       ],
       "isUnique": false,
       "where": null,
       "origin": "manual",
-      "name": "card_examples_card_meaning_id_index",
+      "name": "word_meaning_examples_word_meaning_id_index",
       "entityType": "indexes",
-      "table": "card_example"
-    },
-    {
-      "columns": [
-        {
-          "value": "card_id",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "where": null,
-      "origin": "manual",
-      "name": "card_meanings_card_id_index",
-      "entityType": "indexes",
-      "table": "card_meaning"
-    },
-    {
-      "columns": [
-        {
-          "value": "card_meaning_id",
-          "isExpression": false
-        },
-        {
-          "value": "attribute_id",
-          "isExpression": false
-        },
-        {
-          "value": "value",
-          "isExpression": false
-        }
-      ],
-      "isUnique": true,
-      "where": null,
-      "origin": "manual",
-      "name": "card_meaning_attribute_unique",
-      "entityType": "indexes",
-      "table": "card_meaning_attribute"
-    },
-    {
-      "columns": [
-        {
-          "value": "attribute_id",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "where": null,
-      "origin": "manual",
-      "name": "card_meaning_attributes_attribute_index",
-      "entityType": "indexes",
-      "table": "card_meaning_attribute"
+      "table": "word_meaning_example"
     },
     {
       "columns": [
@@ -1188,7 +902,7 @@
       "origin": "manual",
       "name": "user_card_meanings_due_index",
       "entityType": "indexes",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "columns": [
@@ -1197,7 +911,7 @@
           "isExpression": false
         },
         {
-          "value": "card_meaning_id",
+          "value": "word_meaning_id",
           "isExpression": false
         }
       ],
@@ -1206,12 +920,12 @@
       "origin": "manual",
       "name": "user_card_meanings_user_meaning_unique",
       "entityType": "indexes",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "columns": [
         {
-          "value": "card_meaning_id",
+          "value": "word_meaning_id",
           "isExpression": false
         }
       ],
@@ -1220,7 +934,7 @@
       "origin": "manual",
       "name": "user_card_meanings_card_meaning_index",
       "entityType": "indexes",
-      "table": "user_card_meaning"
+      "table": "user_fsrs_data"
     },
     {
       "columns": [
@@ -1238,7 +952,7 @@
       "origin": "manual",
       "name": "user_card_meaning_reviews_user_index",
       "entityType": "indexes",
-      "table": "user_card_meaning_review"
+      "table": "user_fsrs_review"
     },
     {
       "columns": [
@@ -1260,75 +974,7 @@
       "origin": "manual",
       "name": "user_card_meaning_reviews_user_state_index",
       "entityType": "indexes",
-      "table": "user_card_meaning_review"
-    },
-    {
-      "columns": [
-        {
-          "value": "user_card_meaning_id",
-          "isExpression": false
-        },
-        {
-          "value": "review",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "where": null,
-      "origin": "manual",
-      "name": "user_card_meaning_reviews_progress_index",
-      "entityType": "indexes",
-      "table": "user_card_meaning_review"
-    },
-    {
-      "columns": [
-        {
-          "value": "card_meaning_id",
-          "isExpression": false
-        },
-        {
-          "value": "review",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "where": null,
-      "origin": "manual",
-      "name": "user_card_meaning_reviews_meaning_index",
-      "entityType": "indexes",
-      "table": "user_card_meaning_review"
-    },
-    {
-      "columns": [
-        {
-          "value": "user_id",
-          "isExpression": false
-        },
-        {
-          "value": "deck_id",
-          "isExpression": false
-        }
-      ],
-      "isUnique": true,
-      "where": null,
-      "origin": "manual",
-      "name": "user_decks_deck_unique",
-      "entityType": "indexes",
-      "table": "user_deck"
-    },
-    {
-      "columns": [
-        {
-          "value": "deck_id",
-          "isExpression": false
-        }
-      ],
-      "isUnique": false,
-      "where": null,
-      "origin": "manual",
-      "name": "user_decks_deck_id_index",
-      "entityType": "indexes",
-      "table": "user_deck"
+      "table": "user_fsrs_review"
     },
     {
       "columns": [
