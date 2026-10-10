@@ -86,6 +86,11 @@ export function createCatalogRepository(db: Database) {
   const crud = catalogCrud(db);
   return {
     ...crud,
+    async ensureCefrLevel(value: typeof s.cefrLevelTable.$inferSelect.value) {
+      await db.insert(s.cefrLevelTable).values({ value }).onConflictDoNothing();
+      const [level] = await db.select().from(s.cefrLevelTable).where(eq(s.cefrLevelTable.value, value));
+      return level;
+    },
     async getTopicsByIds(ids: number[]) {
       if (!ids.length) return [];
       if (ids.length > 500) throw new RangeError("At most 500 topics per request");

@@ -14,8 +14,12 @@
   "type": "commonjs",
   "main": "index.js",
   "scripts": {
+    "start": "tsx src/index.ts",
+    "build": "tsc",
+    "db:migrate": "drizzle-kit migrate",
     "test": "node --import tsx --test tests/*.test.cjs",
     "typecheck": "tsc --noEmit",
+    "test:telegram": "node --import tsx --test tests/telegram.test.cjs",
     "test:recommendations": "node --import tsx --test tests/recommendation-schema.test.cjs",
     "test:models": "node --import tsx --test tests/recommendation-schema.test.cjs tests/model-integrity.test.cjs",
     "test:repositories": "node --import tsx --test tests/repositories.test.cjs tests/recommendation-repository.test.cjs",

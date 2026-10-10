@@ -35,6 +35,18 @@ export function userCrud(db: Executor) {
 export function createUserRepository(db: Database) {
   return {
     ...userCrud(db),
+    async upsertTelegramUser(input: {
+      telegramId: number; username: string | null; firstName: string; lastName: string | null;
+    }) {
+      // Telegram identity updates must never change application permissions.
+      const identity = { telegramId: input.telegramId, username: input.username,
+        firstName: input.firstName, lastName: input.lastName };
+      const [user] = await db.insert(s.userTable).values(identity).onConflictDoUpdate({
+        target: s.userTable.telegramId,
+        set: { username: input.username, firstName: input.firstName, lastName: input.lastName },
+      }).returning();
+      return user;
+    },
     async getByTelegramId(telegramId: number) {
       const [row] = await db
         .select()

@@ -87,6 +87,10 @@ CEFR: A1=-2, A2=-1, B1=0, B2=1, C1=2, C2=3.
 атомарно заменяет связи; дубликат темы или ошибка FK не удаляет прежние связи.
 
 `users.getByTelegramId` ищет пользователя.
+`users.upsertTelegramUser({ telegramId, username, firstName, lastName })`
+создаёт пользователя или обновляет данные Telegram по уникальному ID,
+сохраняя `isAdmin`. Отсутствующие username/lastName передаются как `null`.
+`catalog.ensureCefrLevel(value)` идемпотентно создаёт один из шести уровней CEFR.
 `ensureProfile(userId)` создаёт профиль с defaults, сохраняя существующие настройки.
 `setSetting(userId, key, value)` обновляет значение по уникальному ключу.
 `setTopicPreference(userId, topicId, { interestWeight?, isBlocked? })`
@@ -94,6 +98,8 @@ CEFR: A1=-2, A2=-1, B1=0, B2=1, C1=2, C2=3.
 
 ## FSRS
 
+- `learning.getSummary(userId)` возвращает число карточек по каждому состоянию
+  через GROUP BY, без ограничения размера страницы.
 - `learning.introduceMeaning(userId, wordMeaningId, now?)` идемпотентно создаёт
   `createEmptyCard(now)` со `state=New` и `introducedAt`. Повторный вызов
   сохраняет первоначальную дату и состояние. Для принятия рекомендации

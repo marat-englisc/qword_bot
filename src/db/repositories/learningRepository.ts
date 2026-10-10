@@ -143,6 +143,10 @@ export function createLearningRepository(db: Database) {
   const reviews = s.userFsrsReviewTable;
   return {
     ...learningCrud(db),
+    async getSummary(userId: number) {
+      return db.select({ state: cards.state, count: count() }).from(cards)
+        .where(eq(cards.userId, userId)).groupBy(cards.state);
+    },
     async startLearning(userId: number, wordMeaningId: number, now = new Date()) {
       return db.transaction(async tx => {
         const card = await introduceMeaning(tx, userId, wordMeaningId, now);

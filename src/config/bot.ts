@@ -1,4 +1,6 @@
-import { Bot } from "grammy";
+import { createTelegramBot } from "../telegram";
 import { TELEGRAM_API } from "./constants";
+import { db } from "./connection";
 
-export const bot = new Bot(TELEGRAM_API);
+if (!TELEGRAM_API) throw new Error("Missing environment variable: TELEGRAM_API");
+export const bot = createTelegramBot(TELEGRAM_API, db);
