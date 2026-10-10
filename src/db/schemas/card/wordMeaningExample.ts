@@ -1,14 +1,14 @@
 import { index, integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
-import { cardMeaningTable } from "./cardMeaning";
+import { wordMeaningTable } from "./wordMeaning";
 
-export const cardExampleTable = sqliteTable(
-  "card_example",
+export const wordMeaningExampleTable = sqliteTable(
+  "word_meaning_example",
   {
     id: integer("id").primaryKey({ autoIncrement: true }),
 
-    cardMeaningId: integer("card_meaning_id")
+    wordMeaningId: integer("word_meaning_id")
       .notNull()
-      .references(() => cardMeaningTable.id, {
+      .references(() => wordMeaningTable.id, {
         onDelete: "cascade",
       }),
 
@@ -17,6 +17,8 @@ export const cardExampleTable = sqliteTable(
     exampleTranslation: text("example_translation").notNull(),
   },
   (table) => [
-    index("card_examples_card_meaning_id_index").on(table.cardMeaningId),
+    index("word_meaning_examples_word_meaning_id_index").on(
+      table.wordMeaningId,
+    ),
   ],
 );

@@ -1,10 +1,14 @@
 import { sql } from "drizzle-orm";
-import { integer, sqliteTable, text } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
 
-export const deckTable = sqliteTable("deck", {
+export const wordTable = sqliteTable("word", {
   id: integer("id").primaryKey({ autoIncrement: true }),
 
-  name: text("name").notNull(),
+  title: text("title").notNull(),
+
+  transcription: text("transcription"),
+
+  audioUrl: text("audio_url"),
 
   createdAt: text("created_at")
     .notNull()

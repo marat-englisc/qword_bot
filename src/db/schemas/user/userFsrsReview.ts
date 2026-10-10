@@ -1,11 +1,10 @@
 import type { Rating, State } from "ts-fsrs";
 import { index, integer, sqliteTable, real } from "drizzle-orm/sqlite-core";
-import { cardMeaningTable } from "../card/cardMeaning";
-import { userCardMeaningTable } from "./userCardMeaning";
 import { userTable } from "./user";
+import { wordMeaningTable } from "../card/wordMeaning";
 
-export const userCardMeaningReviewTable = sqliteTable(
-  "user_card_meaning_review",
+export const userFsrsReviewTable = sqliteTable(
+  "user_fsrs_review",
   {
     id: integer("id").primaryKey({ autoIncrement: true }),
 
@@ -15,15 +14,9 @@ export const userCardMeaningReviewTable = sqliteTable(
         onDelete: "cascade",
       }),
 
-    cardMeaningId: integer("card_meaning_id")
+    wordMeaningId: integer("word_meaning_id")
       .notNull()
-      .references(() => cardMeaningTable.id, {
-        onDelete: "cascade",
-      }),
-
-    userCardMeaningId: integer("user_card_meaning_id")
-      .notNull()
-      .references(() => userCardMeaningTable.id, {
+      .references(() => wordMeaningTable.id, {
         onDelete: "cascade",
       }),
 
@@ -55,14 +48,6 @@ export const userCardMeaningReviewTable = sqliteTable(
     index("user_card_meaning_reviews_user_state_index").on(
       table.userId,
       table.state,
-      table.review,
-    ),
-    index("user_card_meaning_reviews_progress_index").on(
-      table.userCardMeaningId,
-      table.review,
-    ),
-    index("user_card_meaning_reviews_meaning_index").on(
-      table.cardMeaningId,
       table.review,
     ),
   ],

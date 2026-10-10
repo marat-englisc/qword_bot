@@ -6,11 +6,11 @@ import {
   real,
   uniqueIndex,
 } from "drizzle-orm/sqlite-core";
-import { cardMeaningTable } from "../card/cardMeaning";
 import { userTable } from "./user";
+import { wordMeaningTable } from "../card/wordMeaning";
 
-export const userCardMeaningTable = sqliteTable(
-  "user_card_meaning",
+export const userFsrsDataTable = sqliteTable(
+  "user_fsrs_data",
   {
     id: integer("id").primaryKey({ autoIncrement: true }),
 
@@ -20,9 +20,9 @@ export const userCardMeaningTable = sqliteTable(
         onDelete: "cascade",
       }),
 
-    cardMeaningId: integer("card_meaning_id")
+    wordMeaningId: integer("word_meaning_id")
       .notNull()
-      .references(() => cardMeaningTable.id, {
+      .references(() => wordMeaningTable.id, {
         onDelete: "cascade",
       }),
 
@@ -50,8 +50,8 @@ export const userCardMeaningTable = sqliteTable(
     index("user_card_meanings_due_index").on(table.userId, table.due),
     uniqueIndex("user_card_meanings_user_meaning_unique").on(
       table.userId,
-      table.cardMeaningId,
+      table.wordMeaningId,
     ),
-    index("user_card_meanings_card_meaning_index").on(table.cardMeaningId),
+    index("user_card_meanings_card_meaning_index").on(table.wordMeaningId),
   ],
 );

@@ -1,4 +1,4 @@
-import { cardTable } from "./schemas/card/card";
+import { cardTable } from "./schemas/card/word";
 import { deckTable } from "./schemas/card/deck";
 import { userTable } from "./schemas/user/user";
 
